@@ -12,20 +12,20 @@ from six.moves import urllib
 import json
 
 endpoint = 'https://maps.googleapis.com/maps/api/directions/json?'
-api_key = 'AIzaSyAQf4huEYpoasGByJWlQmWUgOYPyijxXsk'
+api_key = 'apikey'
 
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'mySecretKey'
-app.config['RECAPTCHA_PUBLIC_KEY'] = '6Lc7XJMUAAAAADTvH-qM6dyakmFlyqfLLrHXEoFF'
-app.config['RECAPTCHA_PRIVATE_KEY'] = '6Lc7XJMUAAAAAI8Be0ozfbfB5UrPkvgDTh6DSUiW'
+app.config['RECAPTCHA_PUBLIC_KEY'] = 'publicKey'
+app.config['RECAPTCHA_PRIVATE_KEY'] = 'privateKey'
 
 google_bp = make_google_blueprint(
-client_id = "407031439471-385kqsjsm2mmu68nk5o9lbqifqsadpc1.apps.googleusercontent.com",
-client_secret = "anwDX-WvGltr5l5uS0KbKpSM"
+client_id = "clientID",
+client_secret = "secretKey"
 )
 
-app.register_blueprint(google_bp,url_prefix='/nachiketw')
+app.register_blueprint(google_bp,url_prefix='/something')
 
 Bootstrap(app)
 class LoginForm(FlaskForm):
