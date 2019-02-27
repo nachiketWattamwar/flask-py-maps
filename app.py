@@ -139,7 +139,7 @@ def search():
     directions = json.loads(response)
     print(directions.keys())
     routes = directions['routes']
-    routes[0].keys()
+    print(routes[0]['overview_polyline'])
     return request.form['origin']
 
 
