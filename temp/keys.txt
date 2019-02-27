@@ -1,0 +1,5 @@
+google auth
+clienet ID 407031439471-385kqsjsm2mmu68nk5o9lbqifqsadpc1.apps.googleusercontent.com
+secret key anwDX-WvGltr5l5uS0KbKpSM
+
+maps api AIzaSyAQf4huEYpoasGByJWlQmWUgOYPyijxXsk
