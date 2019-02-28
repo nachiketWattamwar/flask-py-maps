@@ -10,6 +10,8 @@ from wtforms import StringField, PasswordField, BooleanField
 from wtforms.validators import InputRequired,Email,Length
 from six.moves import urllib
 import json
+import googlemaps
+from datetime import datetime
 
 endpoint = 'https://maps.googleapis.com/maps/api/directions/json?'
 api_key = 'apikey'
@@ -132,15 +134,8 @@ def search():
     print(origin)
     destination = request.form['destination']
     print(destination)
-    nav_request = 'origin={}&destination={}&key={}'.format(origin,destination,api_key)
-    myrequest = endpoint + nav_request
-    print("complete request is ",myrequest)
-    response = urllib.request.urlopen(myrequest).read()
-    directions = json.loads(response)
-    print(directions.keys())
-    routes = directions['routes']
-    print(routes[0]['overview_polyline'])
-    return request.form['origin']
+    directions_result = gmaps.directions(origin,destination,mode = "driving")
+    print('\n'.join('{}: {}'.format(*k) for k in enumerate(directions_result)))
 
 
 @app.route('/logout')
