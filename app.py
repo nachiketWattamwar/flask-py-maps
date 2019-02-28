@@ -93,7 +93,7 @@ def login():
     if form.validate_on_submit():#if form.validate_on_submit():
         print("inside if ")
         datastore_client = datastore.Client()
-        query = datastore_client.query(kind = '5634161670881280')
+        query = datastore_client.query(kind = 'kindID')
         all_entities = list(query.fetch())
         for entity in all_entities:
 
@@ -108,7 +108,7 @@ def signup():
     form = RegisterForm()
     if form.validate_on_submit():
         datastore_client = datastore.Client()
-        entity = datastore.Entity(key=datastore_client.key('5634161670881280'))
+        entity = datastore.Entity(key=datastore_client.key('KeyID'))
         entity.update({
         'email': form.email.data,
         'password':form.password.data,
