@@ -60,7 +60,7 @@ def admin():
         if form.username.data == 'admin' and form.password.data == 'admin':
             print("inside if for admin")
             datastore_client = datastore.Client()
-            query = datastore_client.query(kind = '5634161670881280')
+            query = datastore_client.query(kind = 'kindName')
             #print("all values ",list(query.fetch()))
             all_entities = list(query.fetch())
             #print(all_entities[0])
