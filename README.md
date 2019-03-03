@@ -4,5 +4,13 @@ This application uses googleMaps API to fetch the distance between source and de
 and display to the user.
 
 
+Replace API keys with your keys.
+
+Run the python code using below command:
+
+$python app.py
+
+Open link on localhost:5000/
+
 
 
