@@ -59,15 +59,72 @@ Dashboard
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header">Welcome, {{ name }}</h1>
+			
+			 <div id="floating-panel" style="position:relative">
+              <b>Start: </b>
+              <select id="start">
+              <option value="san jose, ca">SJ</option>
+              <option value="barstow, ca">Barstow</option>
+              <option value="san bernardino, ca">San Bernardino</option>
+              <option value="los angeles, ca">Los Angeles</option>
+              </select>
+              <b>End: </b>
+              <select id="end">
+              <option value="san francisco, ca">SF</option>
+              <option value="barstow, ca">Barstow</option>
+              <option value="san bernardino, ca">San Bernardino</option>
+              <option value="los angeles, ca">Los Angeles</option>
+              </select>
+              </div>
+              <div id="map abcc" style="height:400px"></div>
 
+               <script type="text/javascript">
+                 function initMap() {
+                    var directionsService = new google.maps.DirectionsService;
+
+                    var directionsDisplay = new google.maps.DirectionsRenderer;
+                    var map = new google.maps.Map(document.getElementById('map abcc'), {
+                      zoom: 7,
+                      center: {lat: 41.85, lng: -87.65}
+                    });
+                    directionsDisplay.setMap(map);
+
+                    var onChangeHandler = function() {
+                      calculateAndDisplayRoute(directionsService, directionsDisplay);
+                    };
+
+                    document.getElementById('end').addEventListener('change', onChangeHandler);
+                  }
+
+                  function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+                    directionsService.route({
+                      origin: document.getElementById('start').value,
+                      destination: document.getElementById('end').value,
+                      travelMode: 'TRANSIT'
+                    }, function(response, status) {
+                      if (status === 'OK') {
+                        directionsDisplay.setDirections(response);
+                      } else {
+                        window.alert('Directions request failed due to ' + status);
+                      }
+                    });
+                  }
+               </script>
+
+              <script async defer src="https://maps.googleapis.com/maps/api/js?key=myApiKey&callback=initMap"></script>
+
+
+        </div>
+			
+			
+			
+			
+			
+			
           <div class="row placeholders">
             <div class="col-xs-6 col-sm-3 placeholder">
 
-              <form class="form-signin" method="POST" action="/search">
-                <h2 class="form-signin-heading">Enter source and Destination</h2>
-                 <input type="text" name="origin" placeholder="source">
-                 <input type="text" name="destination" placeholder="destination">
-                <button class="btn btn-lg btn-secondary btn-block" type="submit">Search</button>
+              
 
             </div>
           </div>
